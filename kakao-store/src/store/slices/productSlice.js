@@ -20,7 +20,8 @@ const productsSlice = createSlice({
         state.isEnd = true;
       }
       state.loading = false;
-      state.products = action.payload; // {sucess, response, error}
+      
+      state.products = action.payload.response; // {sucess, response, error}
       state.error = action.payload.error;
     });
     builder.addCase(getProduct.rejected, (state, action) => {
