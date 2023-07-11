@@ -15,8 +15,8 @@ function GNB() {
   };
 
   return (
-    <header className="header">
-      <div className="contents">
+    <header className="header float-left">
+      <div className=" contents">
         <Link to="/">
           <img src={logoKakao} alt="logoKakao.png" height={30} />
         </Link>

@@ -19,8 +19,13 @@ const MainProductTemplate = () => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        if (entry.isIntersecting && !isEnd) {
-          setPage((page) => page + 1);
+        if (
+          entry.isIntersecting &&
+          entry.isIntersecting &&
+          bottomObserver.current &&
+          !isEnd
+        ) {
+          setPage((prev) => prev + 1);
         }
       });
     },

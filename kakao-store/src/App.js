@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setEmailandPassword, logout } from './store/slices/userSlice';
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -52,7 +53,9 @@ function App() {
         </Routes>
         <Routes>
           <Route element={<MainLayout/>}>
-            <Route path='/' element={<MainPage />} />
+            <Route path='/' element={<HomePage /> } />
+            <Route path='/product/:id' element={<ProductDetailPage /> } />
+
           </Route>
         </Routes>
 
