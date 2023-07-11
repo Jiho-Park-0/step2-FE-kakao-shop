@@ -16,3 +16,9 @@ const ProductGrid = ({ products }) => {
 };
 
 export default ProductGrid;
+
+// grid는 명시적으로 행과 열을 나눌때
+
+// flex는 유동적으로 바뀌어야 할때
+
+// fr 비율

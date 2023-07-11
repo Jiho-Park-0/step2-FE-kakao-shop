@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState, useRef } from "react";
 import Container from "../components/atoms/Container";
-import ProductGrid from "../components/organisms/Product.Grid";
+import ProductGrid from "../components/organisms/ProductGrid";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../store/slices/productSlice";
 
