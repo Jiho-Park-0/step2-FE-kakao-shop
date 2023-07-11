@@ -7,6 +7,8 @@ import Title from './components/atoms/Title';
 import MainPage from './pages/MainPage'; // Import MainPage component
 import { useSelector, useDispatch } from 'react-redux';
 import { setEmailandPassword, logout } from './store/slices/userSlice';
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
 
 function App() {
   const email = useSelector((state) => state.user.email);
@@ -56,6 +58,13 @@ function App() {
           <Route path='/login' element={<LoginPage onLogin={handleLogin} />} />
           <Route path='/signup' element={<RegisterPage />} />
         </Routes>
+        <Routes>
+          <Route element={<MainLayout/>}>
+            <Route path='/' element={<HomePage />} />
+          </Route>
+        </Routes>
+
+        
       </BrowserRouter>
     </div>
   );
