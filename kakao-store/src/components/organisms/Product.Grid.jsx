@@ -1,6 +1,11 @@
 import ProductCard from "../molecules/ProductCard";
 
 const ProductGrid = ({ products }) => {
+  //loading state
+
+  //error state
+
+  //presentation state
   return (
     <div className="product-grid">
       {products.map((product) => (

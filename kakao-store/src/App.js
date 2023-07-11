@@ -11,8 +11,6 @@ import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
 
 function App() {
-  const email = useSelector((state) => state.user.email);
-  const password = useSelector((state) => state.user.password);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const dispatch = useDispatch();
 
@@ -24,12 +22,6 @@ function App() {
       dispatch(setEmailandPassword({ email: storedEmail, password: storedPassword }));
     }
   }, [dispatch]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('email');
-    localStorage.removeItem('password');
-    dispatch(logout());
-  };
 
   const handleLogin = (email, password) => {
     localStorage.setItem('email', email);
