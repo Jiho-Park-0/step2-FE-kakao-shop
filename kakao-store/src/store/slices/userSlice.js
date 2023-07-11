@@ -4,6 +4,8 @@ const initialState = {
   email: null,
   password: null,
   isLoggedIn: false,
+  timeoutId: null,
+  token: null,
 }
 
 const userSlice = createSlice({
@@ -15,14 +17,23 @@ const userSlice = createSlice({
       state.password = action.payload.password;
       state.isLoggedIn = true;
     },
+    setToken: (state, action) => {
+      state.token = action.payload.token;
+    },
     logout: (state) => {
       state.email = null;
       state.password = null;
       state.isLoggedIn = false;
     },
+    setTimeoutId: (state, action) => {
+      state.timeoutId = action.payload;
+    },
+    clearTimeoutId: (state) => {
+      state.timeoutId = null;
+    },
   }
 });
 
-export const { setEmailandPassword, logout } = userSlice.actions;
+export const { setEmailandPassword, setToken,  logout, setTimeoutId, clearTimeoutId } = userSlice.actions;
 
 export default userSlice.reducer;

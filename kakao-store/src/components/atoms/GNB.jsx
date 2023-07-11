@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setEmailandPassword } from "../../store/slices/userSlice";
+import { setToken } from "../../store/slices/userSlice";
 import logoKakao from "../../images/logoKakao.png";
 import cart from "../../images/cart.png";
 
 function GNB() {
-  const email = useSelector((state) => state.user.email);
+  const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    dispatch(setEmailandPassword(null));
+    dispatch(setToken(null));
     alert("로그아웃 되었습니다.");
   };
 
@@ -31,7 +31,7 @@ function GNB() {
             <span> | </span>
             <span>
               {/* 로그인 버튼 */}
-              {email ? (
+              {token ? (
                 <Link
                   to="/login"
                   onClick={handleLogout}
