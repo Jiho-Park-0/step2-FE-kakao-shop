@@ -4,6 +4,8 @@ import ProductGrid from "../components/organisms/ProductGrid";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../store/slices/productSlice";
 import Loader from "../components/atoms/Loader";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import SkeletonCard from "../components/molecules/SkeletonCard";
 import "../styles/Skeleton.css";
 
 const MainProductTemplate = () => {
@@ -30,7 +32,7 @@ const MainProductTemplate = () => {
     },
     { threshold: 1 }
   );
-  const time = 200;
+  const time = 2000;
   useEffect(() => {
     io.observe(bottomObserver.current);
     setTimeout(() => {
@@ -45,21 +47,19 @@ const MainProductTemplate = () => {
   return (
     <Container className={"product-section"}>
       <Suspense fallback={<Loader />}>
-        {!isLoading ? (
-          <ProductGrid products={products} />
-        ) : (
-          <>
-            <Loader />
-            <div className="row p-4">
-              <div className="col col-10 skeleton-field-wrapper">
-                {Array.from(Array(15).keys()).map((index) => (
-                  <div key={index} className="skeleton"></div>
-                ))}
-              </div>
-            </div>
-          </>
+        {isLoading && <Loader />}
+        {isLoading && (
+          // <SkeletonCard />
+          <div className="col col-10 skeleton-field-wrapper">
+            {Array.from(Array(15).keys()).map((index) => (
+              <div key={index} className="skeleton"></div>
+            ))}
+          </div>
         )}
-
+        {error && <p>에러가 발생했습니다.</p>}
+        {!isLoading && (
+          <ProductGrid products={products} isLoading={isLoading} />
+        )}
         <div ref={bottomObserver}></div>
       </Suspense>
     </Container>

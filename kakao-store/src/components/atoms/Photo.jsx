@@ -1,3 +1,5 @@
+import Skeleton from "react-loading-skeleton";
+
 const Photo = ({ src, alt }) => {
   return (
     <picture>
