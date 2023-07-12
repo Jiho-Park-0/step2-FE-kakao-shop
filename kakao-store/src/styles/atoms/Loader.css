@@ -21,9 +21,10 @@
   height: 100px;
   width: 20%;
   text-align: center;
+  justify-content: center;
   padding: 1em;
   margin: 0 auto 1em;
-  display: inline-block;
+  display: flex;
   vertical-align: top;
 }
 

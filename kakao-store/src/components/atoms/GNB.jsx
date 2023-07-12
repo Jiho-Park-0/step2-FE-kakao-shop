@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setEmailandPassword } from "../../store/slices/userSlice";
+import { logout } from "../../store/slices/userSlice";
 import logoKakao from "../../images/logoKakao.png";
 import cart from "../../images/cart.png";
 
@@ -10,26 +10,26 @@ function GNB() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    dispatch(setEmailandPassword(null));
+    dispatch(logout());
     alert("로그아웃 되었습니다.");
   };
 
   return (
-    <header className="header float-left">
-      <div className=" contents">
+    <header className="header m-0 flex justify-between p-6">
+      <div className=" contents ">
         <Link to="/">
-          <img src={logoKakao} alt="logoKakao.png" height={30} />
+          <img src={logoKakao} alt="logoKakao.png" height={20} width={90} />
         </Link>
         <nav>
-          <div className="navigation">
-            <span>
+          <div className="navigation float-right flex items-center">
+            <span className="mx-3">
               {/* 장바구니 버튼 */}
               <Link to="/cart">
-                <img src={cart} alt="cart.png" height={30} />
+                <img src={cart} alt="cart.png" height={28} width={28} />
               </Link>
             </span>
             <span> | </span>
-            <span>
+            <span className="mx-3">
               {/* 로그인 버튼 */}
               {email ? (
                 <Link
@@ -37,8 +37,7 @@ function GNB() {
                   onClick={handleLogout}
                   style={{ textDecoration: "none", color: "black" }}
                 >
-                  {" "}
-                  로그아웃{" "}
+                  {email} 로그아웃{" "}
                 </Link>
               ) : (
                 <Link

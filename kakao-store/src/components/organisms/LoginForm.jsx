@@ -6,7 +6,7 @@ import Title from "../atoms/Title";
 import logo from "../../images/logoKakaoText.png";
 
 import { login } from "../../services/user";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateForm } from "../../utils/VaildationLogin";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -92,6 +92,7 @@ const LoginForm = () => {
         </div>
       ))}
       <Button onClick={handleRegister}>로그인</Button>
+      <Link to="/signup">Sign up</Link>
     </Container>
   );
 };

@@ -3,15 +3,19 @@ import Container from "../components/atoms/Container";
 import ProductGrid from "../components/organisms/ProductGrid";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../store/slices/productSlice";
+import Loader from "../components/atoms/Loader";
+import "../styles/Skeleton.css";
 
 const MainProductTemplate = () => {
   const [page, setPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const bottomObserver = useRef(null);
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
   const loading = useSelector((state) => state.product.loading);
   const error = useSelector((state) => state.product.error);
   const isEnd = useSelector((state) => state.product.isEnd);
+
   // const { products, loading, error } = useSelector((state) => state.product);
 
   const io = new IntersectionObserver(
@@ -19,21 +23,19 @@ const MainProductTemplate = () => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        if (
-          entry.isIntersecting &&
-          entry.isIntersecting &&
-          bottomObserver.current &&
-          !isEnd
-        ) {
+        if (entry.isIntersecting && bottomObserver.current && !isEnd) {
           setPage((prev) => prev + 1);
         }
       });
     },
     { threshold: 1 }
   );
-
+  const time = 200;
   useEffect(() => {
     io.observe(bottomObserver.current);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, time);
   }, []);
 
   useEffect(() => {
@@ -42,10 +44,22 @@ const MainProductTemplate = () => {
 
   return (
     <Container className={"product-section"}>
-      <Suspense fallback={<div>Loading...</div>}>
-        {loading && <p>Loading...</p>}
-        {error && <p>에러 발생!</p>}
-        <ProductGrid products={products} />
+      <Suspense fallback={<Loader />}>
+        {!isLoading ? (
+          <ProductGrid products={products} />
+        ) : (
+          <>
+            <Loader />
+            <div className="row p-4">
+              <div className="col col-10 skeleton-field-wrapper">
+                {Array.from(Array(15).keys()).map((index) => (
+                  <div key={index} className="skeleton"></div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+
         <div ref={bottomObserver}></div>
       </Suspense>
     </Container>
