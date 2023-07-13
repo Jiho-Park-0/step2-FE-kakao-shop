@@ -3,9 +3,9 @@ import Container from "../components/atoms/Container";
 import ProductGrid from "../components/organisms/ProductGrid";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../store/slices/productSlice";
+import { fetchProducts } from "../services/product";
 import Loader from "../components/atoms/Loader";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import SkeletonCard from "../components/molecules/SkeletonCard";
+
 import "../styles/Skeleton.css";
 
 const MainProductTemplate = () => {
@@ -14,18 +14,16 @@ const MainProductTemplate = () => {
   const bottomObserver = useRef(null);
   const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
-  const loading = useSelector((state) => state.product.loading);
   const error = useSelector((state) => state.product.error);
   const isEnd = useSelector((state) => state.product.isEnd);
 
-  // const { products, loading, error } = useSelector((state) => state.product);
-
   const io = new IntersectionObserver(
-    (entries, observer) => {
+    (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
         if (entry.isIntersecting && bottomObserver.current && !isEnd) {
+          io.unobserve(bottomObserver.current);
           setPage((prev) => prev + 1);
         }
       });
@@ -38,7 +36,7 @@ const MainProductTemplate = () => {
     setTimeout(() => {
       setIsLoading(false);
     }, time);
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     dispatch(getProduct(page));

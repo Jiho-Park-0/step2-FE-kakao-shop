@@ -17,3 +17,7 @@ export const getProductById = (id) => {
   // 정상콜백은 밑에서
   return instance.get(`/products/${id}`);
 }
+
+export const getProductList = ()  => {
+  return instance.get("/products");
+}
