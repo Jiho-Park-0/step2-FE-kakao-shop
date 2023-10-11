@@ -1,7 +1,7 @@
 # 카카오톡 쇼핑몰 클론코딩
 
 <div align="center">
-<img width="329" alt="image" src="">
+
 
 </div>
 
@@ -13,11 +13,11 @@
 
 ## 배포 주소
 
-> **개발 버전** : [http://미정]() <br> > **프론트 서버** : [http:// 미정]()
+> **개발 버전** : [http://미정]() <br> > **프론트 서버** : [http:// api서버 마감으로 인한 폐지]()
 
 ## 프로젝트 소개
 
-카카오 테크 캠퍼스 2차 프로젝트로 카카오 쇼핑몰 사이트를 클론코딩 하였다. 6주간의 기간동안 강의와 함께
+카카오 테크 캠퍼스 2차 프로젝트로 카카오 쇼핑몰 사이트를 클론코딩 하였다. 
 
 ## 시작 가이드
 
@@ -80,7 +80,7 @@ $ npm start
 |                                                         장바구니 페이지                                                          |                                                           주문 페이지                                                            |
 | <img width="329" src="https://github.com/Jiho-Park-0/step2-FE-kakao-shop/assets/79912184/0294c2d9-a92e-4e65-87e7-019a5d22cc15"/> | <img width="329" src="https://github.com/Jiho-Park-0/step2-FE-kakao-shop/assets/79912184/c8ef7daa-9525-4548-98bd-6c6aace77255"/> |
 |                                                         주문완료 페이지                                                          |                                                                                                                                  |
-| <img width="329" src="https://github.com/Jiho-Park-0/step2-FE-kakao-shop/assets/79912184/50daaa1c-0571-47a5-8865-7cc0996516d6"/> |                                                    <img width="329" src=""/>                                                     |
+| <img width="329" src="https://github.com/Jiho-Park-0/step2-FE-kakao-shop/assets/79912184/50daaa1c-0571-47a5-8865-7cc0996516d6"/> |                                                                                                        |
 
 ---
 
